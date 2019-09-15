@@ -1,5 +1,5 @@
 # uni-APP 幸运大转盘
-## 演示地址  https://lebow01.github.io/uni-app-wheelDraw/unpackage/dist/build/h5/
+## 演示地址  https://lebow01.github.io/uni-app-wheelDraw/
 ### 使用说明
 
 #### 下载项目

@@ -7,7 +7,7 @@
 			<view id="pointer" class="wheel-pointer"><i></i></view>
 			<view class="wheel-btn">
 				<view id="button" @click="clickButton">
-					<strong>立即</br>抽奖</strong>
+					<b>立即<br>抽奖</b>
 				</view>
 			</view>
 		</view>
@@ -15,13 +15,13 @@
 </template>
 
 <script>
-	import lottery from "./js/index.js"
+	import wheelDraw from "./wheelDraw.js"
 	export default {
 		data() {
 			return {
 				transform: 'rotate(0deg)',//转动角度
 				isRotating:false,//转动状态
-				lottery: null,
+				wheelDraw: null,
 				numberRotations:0,//转动次数
 				show:false,
 			}
@@ -83,10 +83,10 @@
 			drawInit(){
 				this.show = true;
 				var _this = this
-				this.Lottey = new lottery();
+				this.wheelDraw = new wheelDraw();
 				var ctx = uni.createCanvasContext('canvas-one');
 				var ctx2 = uni.createCanvasContext('canvas-bg');
-				this.Lottey.init(this.colors, this.prizeList, 0, ctx, ctx2,this.subText,this.lightSpeed,this.wh)
+				this.wheelDraw.init(this.colors, this.prizeList, 0, ctx, ctx2,this.subText,this.lightSpeed,this.wh)
 			},
 			routing(){
 				if(this.isRotating) return //正在旋转
@@ -105,15 +105,15 @@
 					}
 					// console.log(this.rotatingTime)
 				},1000)
-				let n = this.Lottey.isRotate //传入指定的旋转角度，内部指定获奖结果。在指定角度上加上旋转基数模拟转盘随机旋转。
+				let n = this.wheelDraw.isRotate //传入指定的旋转角度，内部指定获奖结果。在指定角度上加上旋转基数模拟转盘随机旋转。
 				// 随机获奖结果
 				/*    旋转度数 = 上次度数+ 最小圈数 * 360 + 当前数字 * 60 +随机角度  = 最终旋转度数     */
 				 //取一个随机的旋转角度，使获奖结果随机化   30-20  10  - 已经转动的角度
 				let e = this.numberRotations===0?0:this.winIndex
 				n = n + this.turns * 360 + ((this.prizeList.length-this.winIndex)+e)/this.prizeList.length*360 // //1440为旋转基数，最低要旋转1440度，即4圈。rand-(rand%60) 这个是让指针永远停在扇形中心的算法。n + 是为了重复点击的时候有足够的旋转角度。
-				this.Lottey.isRotate = n
-				if (this.Lottey.isRotate) {
-					this.transform = 'rotate(' + this.Lottey.isRotate + 'deg)'
+				this.wheelDraw.isRotate = n
+				if (this.wheelDraw.isRotate) {
+					this.transform = 'rotate(' + this.wheelDraw.isRotate + 'deg)'
 				}
 			},
 			clickButton() {
@@ -251,7 +251,7 @@
 			z-index: 240;
 		}
 
-		.wheel-btn strong {
+		.wheel-btn b {
 			display: block;
 			color: #fff;
 			font-size: 16px;

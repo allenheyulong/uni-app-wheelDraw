@@ -1,4 +1,4 @@
-var lottery = function() {
+var wheelDraw = function() {
 	this.mytime = ''; //跑马灯定时器名称
 	this.lamp = 0; //判断跑马灯闪烁标记
 	this.w2 = '';
@@ -12,7 +12,7 @@ var lottery = function() {
 	this.isRotate = 0;
 	this.subText = '元'
 }
-lottery.prototype.init = function(colors, textArray, isRotate, ctx, ctx2,subText,lightSpeed = 500,wh=300) {
+wheelDraw.prototype.init = function(colors, textArray, isRotate, ctx, ctx2,subText,lightSpeed = 500,wh=300) {
 	this.ctx = ctx;
 	this.ctx2 = ctx2;
 	this.itemsNum = textArray.length; //大转盘等分数
@@ -28,7 +28,7 @@ lottery.prototype.init = function(colors, textArray, isRotate, ctx, ctx2,subText
 	this.subText = subText;
 }
 //获取圆心尺寸
-lottery.prototype.getCanvasII = function(wh) {
+wheelDraw.prototype.getCanvasII = function(wh) {
 	let widthII = wh + 30
 	let heightII = wh + 30
 	this.w2 = parseInt(widthII / 2)
@@ -36,7 +36,7 @@ lottery.prototype.getCanvasII = function(wh) {
 	this.light()
 }
 //转盘内部绘制
-lottery.prototype.getCanvasI = function(speed,wh) {
+wheelDraw.prototype.getCanvasI = function(speed,wh) {
 	let widthI = wh
 	let heightI = wh
 	this.w1 = parseInt(widthI / 2)
@@ -45,7 +45,7 @@ lottery.prototype.getCanvasI = function(speed,wh) {
 	this.mytime = setInterval(this.light.bind(this), speed)
 }
 //绘制奖品名称
-lottery.prototype.Items = function(e) {
+wheelDraw.prototype.Items = function(e) {
 	let that = this
 	let itemsArc = e //每一分扇形的角度
 	let Num = that.itemsNum // 等分数量
@@ -111,7 +111,7 @@ lottery.prototype.Items = function(e) {
 
 
 //跑马灯绘制
-lottery.prototype.light = function() {
+wheelDraw.prototype.light = function() {
 	var that = this
 	var itemsNum = that.itemsNum
 	that.lamp++
@@ -148,4 +148,4 @@ lottery.prototype.light = function() {
 	that.ctx2.draw()
 }
 
-export default lottery
+export default wheelDraw

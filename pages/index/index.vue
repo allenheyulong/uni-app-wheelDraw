@@ -4,7 +4,7 @@
 	</view>
 </template>
 <script>
-	import wheelDraw from '@/components/wheelDraw/index'
+	import wheelDraw from '@/components/wheelDraw/wheelDraw.vue'
 	export default {
 		components: {
 			wheelDraw

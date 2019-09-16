@@ -6,7 +6,7 @@
 在 ``script`` 中引用组件：
 
 ```
-	import wheelDraw from '@/components/wheelDraw/index'
+	import wheelDraw from '@/components/wheelDraw/wheelDraw'
 
 	components: {
 		wheelDraw
@@ -38,7 +38,7 @@
 
 #### 使用
 ```
-import wheelDraw from '@/components/wheelDraw/index'
+import wheelDraw from '@/components/wheelDraw/wheelDraw'
 	export default {
 		components: {
 			wheelDraw
